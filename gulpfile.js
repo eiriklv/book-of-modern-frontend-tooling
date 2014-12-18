@@ -71,6 +71,9 @@ gulp.task('concat', function () {
 
   return gulp.src(['chapters/**/*.md'])
     .pipe(srcFromToc('chapters/toc.md'))
+    .on('error', function(err) {
+      gutil.log('error:', err);
+    })
     .pipe(concat(concatFileName))
     .pipe(gulp.dest(DEST_DIR));
 });
